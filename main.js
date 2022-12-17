@@ -10,15 +10,19 @@ var savedCovers = document.getElementById("saved-covers-button")
 var messageType
 var randomInt
 var newMessage
+var pageSwap 
+
+
+//Checking Local storage to see if there is data from the other page
 var sessionString = sessionStorage.getItem('array')
-
-var favorites = []
-
-if(JSON.parse(sessionString !== undefined)) {
+if(sessionString !== []) {
     var favorites = JSON.parse(sessionString)
-    console.log(JSON.parse(sessionString))}
+} else {
+    var favorites = []
+}
 
 
+//Event Listeners
 affirmationRadio.addEventListener('click', affirmationButton)
 mantraRadio.addEventListener('click', mantraButton)
 receiveClick.addEventListener('click', receiveButton)
@@ -33,10 +37,6 @@ function savedCoversPage() {
     sessionStorage.setItem('array', JSON.stringify(favorites))
     window.location.href = "saved-covers.html"
 }
-
-//coming back home
-
-sessionStorage.setItem('array', JSON.stringify(favorites))
 
 //Buttons functions ⬇️
 //______________________________________________________________________________________________________________
