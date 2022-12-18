@@ -58,13 +58,13 @@ body {
   
 .home {
     width: 40vh;
-    color: #ffffff;
-    border: 2px #ffffff solid;
+    color: #000000;
+    border: 2px #000000 solid;
     margin-left: 50%;
     transform: translateX(-50%);
 }
 
 .home:hover {
-    background-color: #59135a;
+    background-color: #383838;
     color: #fff
 }

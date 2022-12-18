@@ -1,7 +1,7 @@
 //Variables ⬇️
 //______________________________________________________________________________________________________________
 
-var savedCovers = document.querySelector(".saved-covers")
+var savedMessages = document.querySelector(".saved-messages")
 
 
 var sessionString = sessionStorage.getItem('array')
@@ -13,24 +13,36 @@ sessionStorage.setItem('array', JSON.stringify(favorites))
 console.log(homeButton)
 homeButton.addEventListener('click', home)
 
-console.log("fefe")
-
 
 //Other Functions
 //______________________________________________________________________________________________________________
 
 for(var i = 0; i < favorites.length; i++) {
-    savedCovers.innerHTML += 
+    savedMessages.innerHTML += 
     `
-    <div class="box2">
+    <div id = "${i}" class="box2">
       <section class = "message-box">
-      <h1>${favorites[i]}</h1>
+        <h1>${favorites[i]}</h1>
       </section>
     </div>
-
     `
+    savedMessageList = savedMessages.children;
+        for (var i = 0; i < savedMessageList.length; i++) {
+          savedMessageList[i].addEventListener("dblclick", deleteSavedMessage)
+      }
 }
 
+function deleteSavedMessage(e) {
+  var parent = e.currentTarget.parentElement
+  var target = e.currentTarget
+  parent.removeChild(target)
+  for (var i = 0; i < favorites.length; i++) {
+      var check1 = target.id
+      console.log(check1)
+      favorites.splice(check1, 1)
+      return
+    }
+  }
 //Page Swap functions ⬇️
 //______________________________________________________________________________________________________________
 

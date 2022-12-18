@@ -15,7 +15,7 @@ var pageSwap
 
 //Checking Local storage to see if there is data from the other page
 var sessionString = sessionStorage.getItem('array')
-if(sessionString !== []) {
+if(sessionString !== null) {
     var favorites = JSON.parse(sessionString)
 } else {
     var favorites = []
@@ -28,12 +28,14 @@ mantraRadio.addEventListener('click', mantraButton)
 receiveClick.addEventListener('click', receiveButton)
 savedCovers.addEventListener('click', savedCoversPage)
 
-
-
 //Page Swap functions ⬇️
 //______________________________________________________________________________________________________________
 
 function savedCoversPage() {
+    if(favorites.length === 0) {
+        alert("You have no saved covers")
+        return
+    }
     sessionStorage.setItem('array', JSON.stringify(favorites))
     window.location.href = "saved-covers.html"
 }
